@@ -2,6 +2,12 @@
 
 A Simple SaaS Solution .NET 7, C#, EF Core, SQL Azure, DI, Dto, Repository, Docker, Docker-Compose, and AKS. I am learning this from a book. I am using this as a reference for future projects.
 
+## Projects
+
+> 1. GoodHabits.Persistence
+> 1. GoodHabits.HabitsAPI
+> 1. GoodHabits.HabitsWeb
+
 ## Getting Started
 
 ```powershell
