@@ -5,6 +5,11 @@ A Simple SaaS Solution .NET 7, C#, EF Core, SQL Azure, DI, Dto, Repository, Dock
 ## Projects
 
 > 1. GoodHabits.Persistence
+
+```bash
+dotnet new classlib --name GoodHabits.Persistence;
+```
+
 > 1. GoodHabits.HabitsAPI
 > 1. GoodHabits.HabitsWeb
 
