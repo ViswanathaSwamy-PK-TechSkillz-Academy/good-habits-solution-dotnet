@@ -21,4 +21,6 @@ SELECT @@VERSION
 GO
 
 Remote-Containers: Rebuild and Reopen in Container
+
+Remote-Containers: Reopen Folder Locally
 ```
