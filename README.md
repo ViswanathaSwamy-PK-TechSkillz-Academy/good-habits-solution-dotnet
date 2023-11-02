@@ -30,6 +30,13 @@ dotnet new blazorwasm -o GoodHabits.HabitsWeb;
 dotnet run --project ./GoodHabits.HabitsWeb/GoodHabits.HabitsWeb.csproj
 ```
 
+```bash
+dotnet new sln --name GoodHabits; \
+dotnet sln add ./GoodHabits.HabitsWeb/GoodHabits.HabitsWeb.csproj; \
+dotnet sln add ./GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj; \
+dotnet sln add ./GoodHabits.Persistence/GoodHabits.Persistence.csproj;
+```
+
 ## Getting Started
 
 ```powershell
