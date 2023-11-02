@@ -11,6 +11,15 @@ dotnet new classlib --name GoodHabits.Persistence;
 ```
 
 > 1. GoodHabits.HabitsAPI
+
+```bash
+dotnet new webapi --name GoodHabits.HabitsAPI;
+
+dotnet add reference ../GoodHabits.Persistence/GoodHabits.Persistence.csproj; \
+dotnet add package Microsoft.EntityFrameworkCore.Design; \
+cd ..;
+```
+
 > 1. GoodHabits.HabitsWeb
 
 ## Getting Started
