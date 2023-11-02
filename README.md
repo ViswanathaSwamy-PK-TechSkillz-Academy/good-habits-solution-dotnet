@@ -18,9 +18,17 @@ dotnet new webapi --name GoodHabits.HabitsAPI;
 dotnet add reference ../GoodHabits.Persistence/GoodHabits.Persistence.csproj; \
 dotnet add package Microsoft.EntityFrameworkCore.Design; \
 cd ..;
+
+dotnet run --project ./GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
 ```
 
 > 1. GoodHabits.HabitsWeb
+
+```bash
+dotnet new blazorwasm -o GoodHabits.HabitsWeb;
+
+dotnet run --project ./GoodHabits.HabitsWeb/GoodHabits.HabitsWeb.csproj
+```
 
 ## Getting Started
 
