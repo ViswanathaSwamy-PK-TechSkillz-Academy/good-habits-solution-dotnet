@@ -2,7 +2,7 @@
 using GoodHabits.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoodHabits.HabitService;
+namespace GoodHabits.HabitsAPI.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -17,26 +17,13 @@ public static class ServiceCollectionExtensions
         var tenants = options.Tenants;
         foreach (var tenant in tenants)
         {
-            string connectionString;
-            if (string.IsNullOrEmpty(
-            tenant.ConnectionString))
-            {
-                connectionString = defaultConnectionString;
-            }
-            else
-            {
-                connectionString = tenant.ConnectionString;
-            }
+            string? connectionString = string.IsNullOrEmpty(tenant.ConnectionString) ? defaultConnectionString : tenant.ConnectionString;
 
             using var scope = services.BuildServiceProvider().CreateScope();
-            var dbContext =
-            scope.ServiceProvider.GetRequiredService < Good
-
-
-            HabitsDbContext > ();
+            GoodHabitsDbContext dbContext = scope.ServiceProvider.GetRequiredService<GoodHabitsDbContext>();
             dbContext.Database.SetConnectionString(connectionString);
 
-            if (dbContext.Database.GetMigrations().Count() > 0)
+            if (dbContext.Database.GetMigrations().Any())
             {
                 dbContext.Database.Migrate();
             }
@@ -53,8 +40,10 @@ public static class ServiceCollectionExtensions
         var section = configuration.GetSection(sectionName);
 
         var options = new T();
+
         section.Bind(options);
 
         return options;
     }
+
 }

@@ -22,6 +22,7 @@ cd ..;
 dotnet run --project ./GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
 
 dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+dotnet-ef migrations add MultiTenant --startup-project ../GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
 ```
 
 > 1. GoodHabits.HabitsWeb
