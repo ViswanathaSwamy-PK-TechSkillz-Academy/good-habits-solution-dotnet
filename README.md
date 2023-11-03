@@ -11,7 +11,31 @@ dotnet new classlib --name GoodHabits.Persistence;
 ```
 
 > 1. GoodHabits.HabitsAPI
+
+```bash
+dotnet new webapi --name GoodHabits.HabitsAPI;
+
+dotnet add reference ../GoodHabits.Persistence/GoodHabits.Persistence.csproj; \
+dotnet add package Microsoft.EntityFrameworkCore.Design; \
+cd ..;
+
+dotnet run --project ./GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
+```
+
 > 1. GoodHabits.HabitsWeb
+
+```bash
+dotnet new blazorwasm -o GoodHabits.HabitsWeb;
+
+dotnet run --project ./GoodHabits.HabitsWeb/GoodHabits.HabitsWeb.csproj
+```
+
+```bash
+dotnet new sln --name GoodHabits; \
+dotnet sln add ./GoodHabits.HabitsWeb/GoodHabits.HabitsWeb.csproj; \
+dotnet sln add ./GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj; \
+dotnet sln add ./GoodHabits.Persistence/GoodHabits.Persistence.csproj;
+```
 
 ## Getting Started
 

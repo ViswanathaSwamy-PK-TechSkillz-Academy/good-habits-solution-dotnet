@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RunHabitsWeb",
+            "type": "blazorwasm",
+            "request": "launch",
+            "preLaunchTask": "build-habits-web",
+            "cwd": "${workspaceFolder}/GoodHabits.HabitsWeb",
+            "url": "https://localhost:5900"
+        },
+        {
+            "name": "RunHabitsAPI",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-habits-api",
+            "program": "${workspaceFolder}/GoodHabits.HabitsAPI/bin/Debug/net7.0/GoodHabits.HabitsAPI.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/GoodHabits.HabitsAPI",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        },
+    ],
+    "compounds": [
+        {
+            "name": "Run All",
+            "configurations": [
+                "RunHabitsAPI",
+                "RunHabitsWeb"
+            ]
+        }
+    ]
+}
