@@ -20,8 +20,4 @@
     <ProjectReference Include="..\GoodHabits.Persistence\GoodHabits.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
