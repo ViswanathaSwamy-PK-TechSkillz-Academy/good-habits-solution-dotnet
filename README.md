@@ -20,6 +20,8 @@ dotnet add package Microsoft.EntityFrameworkCore.Design; \
 cd ..;
 
 dotnet run --project ./GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
+
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 ```
 
 > 1. GoodHabits.HabitsWeb
