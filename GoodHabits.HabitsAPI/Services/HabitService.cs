@@ -1,6 +1,7 @@
 using GoodHabits.HabitsAPI.Interfaces;
 using GoodHabits.Persistence;
 using GoodHabits.Persistence.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoodHabits.HabitsAPI.Services;
 

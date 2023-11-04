@@ -3,6 +3,7 @@ using GoodHabits.HabitsAPI.Interfaces;
 using GoodHabits.HabitsAPI.Services;
 using GoodHabits.Persistence.Configurations;
 using GoodHabits.Persistence.Interfaces;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

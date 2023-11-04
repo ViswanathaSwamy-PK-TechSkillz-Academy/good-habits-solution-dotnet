@@ -2,6 +2,8 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
+using Microsoft.EntityFrameworkCore.Migrations;
+
 namespace GoodHabits.Persistence.Migrations
 {
     /// <inheritdoc />
