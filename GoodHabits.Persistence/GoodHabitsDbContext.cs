@@ -12,6 +12,13 @@ public class GoodHabitsDbContext : DbContext
 
     public DbSet<Habit>? Habits => Set<Habit>();
 
+    public DbSet<User>? Users => Set<User>();
+
+    public DbSet<Progress>? Progress => Set<Progress>();
+
+    public DbSet<Reminder>? Reminders => Set<Reminder>();
+
+    public DbSet<Goal>? Goals => Set<Goal>();
 
     public GoodHabitsDbContext(DbContextOptions options, ITenantService service) : base(options) =>
         _tenantService = service;
@@ -25,7 +32,6 @@ public class GoodHabitsDbContext : DbContext
             _ = optionsBuilder.UseSqlServer(_tenantService.GetConnectionString());
         }
     }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
