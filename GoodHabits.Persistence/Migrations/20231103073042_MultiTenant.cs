@@ -1,7 +1,5 @@
 ﻿#nullable disable
 
-using Microsoft.EntityFrameworkCore.Migrations;
-
 namespace GoodHabits.Persistence.Migrations
 {
     /// <inheritdoc />

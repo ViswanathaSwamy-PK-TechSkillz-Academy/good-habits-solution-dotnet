@@ -1,6 +1,5 @@
 ﻿using GoodHabits.Persistence;
 using GoodHabits.Persistence.Configurations;
-using Microsoft.EntityFrameworkCore;
 
 namespace GoodHabits.HabitsAPI.Extensions;
 

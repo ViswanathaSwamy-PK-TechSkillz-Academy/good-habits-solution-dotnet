@@ -22,6 +22,6 @@ public class Habit : IHasTenant
     public virtual ICollection<Reminder> Reminders { get; set; } = default!;
 
     public virtual Goal Goal { get; set; } = default!;
-    
+
     public Duration Duration { get; set; }
 }

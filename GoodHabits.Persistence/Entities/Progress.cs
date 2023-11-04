@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-
 namespace GoodHabits.Persistence.Entities;
 
 [Index(nameof(Id))]
