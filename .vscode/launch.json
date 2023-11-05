@@ -7,7 +7,8 @@
             "request": "launch",
             "preLaunchTask": "build-habits-web",
             "cwd": "${workspaceFolder}/GoodHabits.HabitsWeb",
-            "url": "https://localhost:5900"
+            "url": "https://localhost:5900",
+            "browser": "chrome"
         },
         {
             "name": "RunHabitsAPI",

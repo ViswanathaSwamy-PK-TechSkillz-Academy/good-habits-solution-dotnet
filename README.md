@@ -25,6 +25,10 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 root ➜ /workspace/GoodHabits.Persistence (swamy/01nov-good-habits-day1)>
 dotnet-ef migrations add MultiTenant --startup-project ../GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
+
+dotnet-ef migrations add AdditionalEntities --startup-project ../GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
+
+dotnet-ef database update --startup-project ../GoodHabits.HabitsAPI/GoodHabits.HabitsAPI.csproj
 ```
 
 > 1. GoodHabits.HabitsWeb
