@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using AutoMapper;
 using GoodHabits.HabitsAPI.Dtos;
 using GoodHabits.HabitsAPI.Interfaces;
@@ -9,6 +10,8 @@ namespace GoodHabits.HabitsAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Route("api/v{version:apiVersion}/[controller]")]
+[ApiVersion("1.0")]
 public class HabitsController : ControllerBase
 {
     private readonly ILogger<HabitsController> _logger;
