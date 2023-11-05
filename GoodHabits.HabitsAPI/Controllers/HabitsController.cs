@@ -101,4 +101,13 @@ public class HabitsController : ControllerBase
         }
     }
 
+    [MapToApiVersion("1.0")]
+    [HttpGet("version")]
+    public virtual async Task<IActionResult> GetVersion()
+    {
+        await Task.CompletedTask;
+
+        return Ok("Response from version 1.0");
+    }
+
 }
