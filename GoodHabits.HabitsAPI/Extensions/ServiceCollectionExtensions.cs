@@ -19,6 +19,11 @@ public static class ServiceCollectionExtensions
         {
             string? connectionString = string.IsNullOrEmpty(tenant.ConnectionString) ? defaultConnectionString : tenant.ConnectionString;
 
+            if(string.IsNullOrWhiteSpace(connectionString))
+            {
+                continue;
+            }
+
             using var scope = services.BuildServiceProvider().CreateScope();
             GoodHabitsDbContext dbContext = scope.ServiceProvider.GetRequiredService<GoodHabitsDbContext>();
             dbContext.Database.SetConnectionString(connectionString);
