@@ -1,8 +1,8 @@
 using AutoMapper;
 using GoodHabits.HabitsAPI.Dtos;
 using GoodHabits.HabitsAPI.Interfaces;
-using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.JsonPatch.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoodHabits.HabitsAPI.Controllers;
