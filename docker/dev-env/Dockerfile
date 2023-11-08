@@ -1,3 +1,5 @@
+# https://hub.docker.com/_/microsoft-vscode-devcontainers?tab=description
+# https://mcr.microsoft.com/v2/vscode/devcontainers/dotnet/tags/list
 # [Choice] .NET version: 7.0, 6.0, 5.0, 3.1, 6.0-bullseye, 5.0-bullseye, 3.1-bullseye, 6.0-focal, 5.0-focal, 3.1-focal
 ARG VARIANT="7.0"
 

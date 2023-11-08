@@ -42,6 +42,8 @@ public class TenantService : ITenantService
             throw new Exception("Invalid Tenant!");
         }
 
+        Console.WriteLine($"Current Tenant Connection String: {_tenant.ConnectionString}");
+
         if (string.IsNullOrEmpty(_tenant.ConnectionString))
         {
             SetDefaultConnectionStringToCurrentTenant();

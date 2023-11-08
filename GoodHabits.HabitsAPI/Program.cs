@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using GoodHabits.HabitsAPI.Extensions;
 using GoodHabits.HabitsAPI.Interfaces;
 using GoodHabits.HabitsAPI.Services;
@@ -21,6 +22,21 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddApiVersioning(opt =>
+{
+    opt.DefaultApiVersion = new ApiVersion(1, 0);
+
+    opt.AssumeDefaultVersionWhenUnspecified = true;
+
+    opt.ReportApiVersions = true;
+
+    opt.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
+            new HeaderApiVersionReader("x-api-version"),
+            new MediaTypeApiVersionReader("x-api-version"));
+});
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())

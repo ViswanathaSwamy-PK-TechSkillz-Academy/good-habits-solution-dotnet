@@ -1,6 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-
 using GoodHabits.Persistence.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoodHabits.Persistence.Entities;
 
