@@ -1,15 +1,15 @@
 ﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "ApiGateway": {
+    "GoodHabits.ApiGateway": {
+      "applicationUrl": "http://localhost:5300",
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
+      "dotnetRunMessages": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5300",
-      "dotnetRunMessages": true
+      "launchBrowser": true,
+      "launchUrl": "swagger"
     }
   }
 }
