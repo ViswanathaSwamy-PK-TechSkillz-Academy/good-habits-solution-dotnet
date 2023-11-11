@@ -16,6 +16,12 @@ dotnet new classlib --name GoodHabits.Persistence;
 dotnet new webapi -n GoodHabits.UserService
 ```
 
+> 1. GoodHabits.ApiGateway
+
+```bash
+dotnet new webapi -n GoodHabits.ApiGateway;
+```
+
 > 1. GoodHabits.HabitsAPI
 
 ```bash
