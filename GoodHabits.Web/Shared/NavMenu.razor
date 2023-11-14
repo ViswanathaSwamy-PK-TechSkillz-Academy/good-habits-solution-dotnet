@@ -27,74 +27,9 @@
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private Habit? SelectedHabit { get; set; }
-    private Habit? EditingHabit { get; set; }
-    private Habit? AddingHabit { get; set; }
-    private bool IsEditing { get; set; } = false;
-
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
-    }
-
-    private void ShowDetails(Habit habit)
-    {
-        SelectedHabit = habit;
-        IsEditing = false;
-    }
-
-    private void AddHabit()
-    {
-        Habit newHabit = new()
-            {
-                Name = "New Habit",
-                Description = "Enter a description here"
-            };
-
-        GoodHabits.Add(newHabit);
-        SelectedHabit = newHabit;
-    }
-
-    private void EditHabit(Habit habit)
-    {
-        SelectedHabit = habit;
-        ShowEditForm();
-    }
-
-    private void DeleteHabit(Habit habit)
-    {
-        GoodHabits.Remove(habit);
-
-        if (SelectedHabit == habit)
-        {
-            SelectedHabit = null;
-        }
-    }
-
-    private void ShowEditForm()
-    {
-        IsEditing = true;
-        EditingHabit = new Habit()
-            {
-                Id = SelectedHabit!.Id,
-                Name = SelectedHabit!.Name,
-                Description = SelectedHabit!.Description
-            };
-    }
-
-    private void SaveHabit()
-    {
-        GoodHabits.Add(EditingHabit!);
-        GoodHabits.Remove(SelectedHabit!);
-        IsEditing = false;
-        SelectedHabit = null;
-    }
-
-    private void CancelEdit()
-    {
-        IsEditing = false;
-        EditingHabit = null;
-        SelectedHabit = null;
     }
 
 }

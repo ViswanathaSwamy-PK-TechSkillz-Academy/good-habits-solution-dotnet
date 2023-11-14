@@ -46,7 +46,7 @@
                                 <label for="edit-habit-description">Description</label>
                                 <textarea class="form-control" id="edit-habit-description" rows="3"
                                     @bind="EditingHabit.Description">
-                                </textarea>
+                                        </textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mt-3" @onclick="() => SaveHabit()">Save</button>
                             <button type="button" class="btn btn-secondary mt-3" @onclick="() =>CancelEdit()">Cancel</button>
@@ -66,6 +66,71 @@ new Habit { Name = "Drink water", Description = "Drink at least 8 glasses of wat
 new Habit { Name = "Exercise", Description = "Do at least 30 minutes of exercise every day." },
 new Habit { Name = "Meditation", Description = "Meditate for at least 10 minutes every day." },
 };
+
+    private Habit? SelectedHabit { get; set; }
+    private Habit? EditingHabit { get; set; }
+    private Habit? AddingHabit { get; set; }
+    private bool IsEditing { get; set; } = false;
+
+    private void ShowDetails(Habit habit)
+    {
+        SelectedHabit = habit;
+        IsEditing = false;
+    }
+
+    private void AddHabit()
+    {
+        Habit newHabit = new()
+            {
+                Name = "New Habit",
+                Description = "Enter a description here"
+            };
+
+        GoodHabits.Add(newHabit);
+        SelectedHabit = newHabit;
+    }
+
+    private void EditHabit(Habit habit)
+    {
+        SelectedHabit = habit;
+        ShowEditForm();
+    }
+
+    private void DeleteHabit(Habit habit)
+    {
+        GoodHabits.Remove(habit);
+
+        if (SelectedHabit == habit)
+        {
+            SelectedHabit = null;
+        }
+    }
+
+    private void ShowEditForm()
+    {
+        IsEditing = true;
+        EditingHabit = new Habit()
+            {
+                Id = SelectedHabit!.Id,
+                Name = SelectedHabit!.Name,
+                Description = SelectedHabit!.Description
+            };
+    }
+
+    private void SaveHabit()
+    {
+        GoodHabits.Add(EditingHabit!);
+        GoodHabits.Remove(SelectedHabit!);
+        IsEditing = false;
+        SelectedHabit = null;
+    }
+
+    private void CancelEdit()
+    {
+        IsEditing = false;
+        EditingHabit = null;
+        SelectedHabit = null;
+    }
 
     private class Habit
     {
