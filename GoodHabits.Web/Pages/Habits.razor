@@ -1,0 +1,28 @@
+@page "/goodhabits"
+@inject HttpClient httpClient
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Good Habits</h3>
+    </div>
+    <div class="col-md-8">
+        <h3>Habit Details</h3>
+    </div>
+</div>
+
+@code {
+
+    private List<Habit> GoodHabits { get; set; } = new List<Habit>()
+{
+new Habit { Name = "Drink water", Description = "Drink at least 8 glasses of water every day." },
+new Habit { Name = "Exercise", Description = "Do at least 30 minutes of exercise every day." },
+new Habit { Name = "Meditation", Description = "Meditate for at least 10 minutes every day." },
+};
+
+    private class Habit
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = default!;
+        public string Description { get; set; } = default!;
+    }
+}
