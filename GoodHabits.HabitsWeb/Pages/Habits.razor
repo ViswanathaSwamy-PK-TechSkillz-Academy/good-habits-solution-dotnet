@@ -46,7 +46,7 @@
                                 <label for="edit-habit-description">Description</label>
                                 <textarea class="form-control" id="edit-habit-description" rows="3"
                                     @bind="EditingHabit.Description">
-                                                                                                                        </textarea>
+                                                                                                                                </textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mt-3" @onclick="() => SaveHabit()">Save</button>
                             <button type="button" class="btn btn-secondary mt-3" @onclick="() =>CancelEdit()">Cancel</button>
@@ -81,7 +81,7 @@
         IsEditing = false;
     }
 
-    private void AddHabit()
+    private async void AddHabit()
     {
         Habit newHabit = new()
             {
@@ -117,9 +117,9 @@
             };
     }
 
-    private void SaveHabit()
+    private await void SaveHabit()
     {
-        httpClient.PutAsJsonAsync($"{ServiceEndpoint}/{EditingHabit!.Id}", EditingHabit);
+        await httpClient.PutAsJsonAsync($"{ServiceEndpoint}/{EditingHabit!.Id}", EditingHabit);
 
         GoodHabits.Add(EditingHabit!);
         GoodHabits.Remove(SelectedHabit!);
@@ -135,8 +135,10 @@
         SelectedHabit = null;
     }
 
-    private void DeleteHabit(Habit habit)
+    private async void DeleteHabit(Habit habit)
     {
+        await httpClient.DeleteAsync($"{ServiceEndpoint}/{habit.Id}");
+
         GoodHabits.Remove(habit);
 
         if (SelectedHabit == habit)
