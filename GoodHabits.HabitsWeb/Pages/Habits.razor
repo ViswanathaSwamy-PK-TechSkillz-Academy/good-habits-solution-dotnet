@@ -83,7 +83,7 @@
 
     private async void AddHabit()
     {
-        Habit newHabit = new()
+        CreateHabit newHabit = new()
             {
                 Name = "New Habit",
                 Description = "Enter a description here",
@@ -94,8 +94,8 @@
         var habit = await response.Content.ReadFromJsonAsync<Habit>();
 
         // Add the new habit to the list of habits
-        GoodHabits.Add(newHabit);
-        SelectedHabit = newHabit;
+        GoodHabits.Add(habit);
+        SelectedHabit = habit;
     }
 
     private void EditHabit(Habit habit)
@@ -117,7 +117,7 @@
             };
     }
 
-    private await void SaveHabit()
+    private async Task SaveHabit()
     {
         await httpClient.PutAsJsonAsync($"{ServiceEndpoint}/{EditingHabit!.Id}", EditingHabit);
 
