@@ -10,10 +10,10 @@ A Simple SaaS Solution .NET 7, C#, EF Core, SQL Azure, DI, Dto, Repository, Dock
 dotnet new classlib --name GoodHabits.Persistence;
 ```
 
-> 1. GoodHabits.Web
+> 1. GoodHabits.HabitsWeb
 
 ```bash
-dotnet new blazorwasm -o GoodHabits.Web
+dotnet new blazorwasm -o GoodHabits.HabitsWeb
 ```
 
 > 1. GoodHabits.UserService
