@@ -46,7 +46,7 @@
                                 <label for="edit-habit-description">Description</label>
                                 <textarea class="form-control" id="edit-habit-description" rows="3"
                                     @bind="EditingHabit.Description">
-                                        </textarea>
+                                                                                                                        </textarea>
                             </div>
                             <button type="submit" class="btn btn-primary mt-3" @onclick="() => SaveHabit()">Save</button>
                             <button type="button" class="btn btn-secondary mt-3" @onclick="() =>CancelEdit()">Cancel</button>
@@ -60,17 +60,20 @@
 
 @code {
 
-    private List<Habit> GoodHabits { get; set; } = new List<Habit>()
-{
-new Habit { Name = "Drink water", Description = "Drink at least 8 glasses of water every day." },
-new Habit { Name = "Exercise", Description = "Do at least 30 minutes of exercise every day." },
-new Habit { Name = "Meditation", Description = "Meditate for at least 10 minutes every day." },
-};
+    private const string ServiceEndpoint = "http://localhost:5300/gateway/habits";
+
+    private List<Habit> GoodHabits { get; set; } = new();
 
     private Habit? SelectedHabit { get; set; }
     private Habit? EditingHabit { get; set; }
     private Habit? AddingHabit { get; set; }
     private bool IsEditing { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        httpClient.DefaultRequestHeaders.Add("tenant", "CloudSphere");
+        GoodHabits = await httpClient.GetFromJsonAsync<List<Habit>>($"{ServiceEndpoint}");
+    }
 
     private void ShowDetails(Habit habit)
     {
@@ -83,9 +86,14 @@ new Habit { Name = "Meditation", Description = "Meditate for at least 10 minutes
         Habit newHabit = new()
             {
                 Name = "New Habit",
-                Description = "Enter a description here"
+                Description = "Enter a description here",
+                UserId = 101
             };
 
+        var response = await httpClient.PostAsJsonAsync(ServiceEndpoint, newHabit);
+        var habit = await response.Content.ReadFromJsonAsync<Habit>();
+
+        // Add the new habit to the list of habits
         GoodHabits.Add(newHabit);
         SelectedHabit = newHabit;
     }
@@ -93,7 +101,38 @@ new Habit { Name = "Meditation", Description = "Meditate for at least 10 minutes
     private void EditHabit(Habit habit)
     {
         SelectedHabit = habit;
+
         ShowEditForm();
+    }
+
+    private void ShowEditForm()
+    {
+        IsEditing = true;
+
+        EditingHabit = new Habit()
+            {
+                Id = SelectedHabit!.Id,
+                Name = SelectedHabit!.Name,
+                Description = SelectedHabit!.Description
+            };
+    }
+
+    private void SaveHabit()
+    {
+        httpClient.PutAsJsonAsync($"{ServiceEndpoint}/{EditingHabit!.Id}", EditingHabit);
+
+        GoodHabits.Add(EditingHabit!);
+        GoodHabits.Remove(SelectedHabit!);
+
+        IsEditing = false;
+        SelectedHabit = null;
+    }
+
+    private void CancelEdit()
+    {
+        IsEditing = false;
+        EditingHabit = null;
+        SelectedHabit = null;
     }
 
     private void DeleteHabit(Habit habit)
@@ -106,30 +145,17 @@ new Habit { Name = "Meditation", Description = "Meditate for at least 10 minutes
         }
     }
 
-    private void ShowEditForm()
+    private class CreateHabit
     {
-        IsEditing = true;
-        EditingHabit = new Habit()
-            {
-                Id = SelectedHabit!.Id,
-                Name = SelectedHabit!.Name,
-                Description = SelectedHabit!.Description
-            };
+        public string Name { get; set; } = default!;
+        public string Description { get; set; } = default!;
+        public int UserId { get; set; }
     }
 
-    private void SaveHabit()
+    private class UpdateHabit
     {
-        GoodHabits.Add(EditingHabit!);
-        GoodHabits.Remove(SelectedHabit!);
-        IsEditing = false;
-        SelectedHabit = null;
-    }
-
-    private void CancelEdit()
-    {
-        IsEditing = false;
-        EditingHabit = null;
-        SelectedHabit = null;
+        public string Name { get; set; } = default!;
+        public string Description { get; set; } = default!;
     }
 
     private class Habit

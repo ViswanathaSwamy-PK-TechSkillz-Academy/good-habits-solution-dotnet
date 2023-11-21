@@ -42,8 +42,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GoodHabits.HabitsAPI v1"));
+
+    app.UseCors(policy =>
+        policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                );
 }
 
 app.UseHttpsRedirection();
