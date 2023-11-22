@@ -16,6 +16,10 @@ RUN apt-get update && \
     apt-get -qy full-upgrade && \
     apt-get install -qy curl && \
     apt-get -y install --no-install-recommends vim && \
+    wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh && \
+    chmod +x dotnet-install.sh && \
+    ./dotnet-install.sh -c 7.0 && \
+    rm dotnet-install.sh && \
     curl -sSL https://get.docker.com/ | sh
 
 RUN dotnet tool install -g dotnet-ef
