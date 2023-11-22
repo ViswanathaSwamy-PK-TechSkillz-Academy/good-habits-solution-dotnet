@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Mvc" Version="7.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
